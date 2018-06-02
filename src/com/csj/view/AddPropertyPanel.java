@@ -3,7 +3,9 @@ package com.csj.view;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -96,12 +98,16 @@ public class AddPropertyPanel extends JPanel{
 	}
 	
 	private void registerProperty(int[] propertyNums, float[] propertyPrices, String batch) throws PropertyOSException{
+		//保存注册前ID
+		int beforeID = propertyID;
 		//储存需要注册的价格类型
 		Map<Property, Float> priceMap = new HashMap<>();
+		//储存需要注册的价格类型
+		List<Property> properties = new ArrayList<>();
 		for (int i = 0; i < propertyNums[0]; i++) {
 			Property property = new Desk(propertyID++,
 					batch, PropertyManager.REPOSITORY, Color.WHITE, Specification.LONG);
-			Client.getPropertyManager().add(property);
+			properties.add(property);
 			if (i == 0) {
 				priceMap.put(property, propertyPrices[0]);
 			}
@@ -109,7 +115,7 @@ public class AddPropertyPanel extends JPanel{
 		for (int i = 0; i < propertyNums[1]; i++) {
 			Property property = new Desk(propertyID++,
 					batch, PropertyManager.REPOSITORY, Color.BLACK, Specification.LONG);
-			Client.getPropertyManager().add(property);
+			properties.add(property);
 			if (i == 0) {
 				priceMap.put(property, propertyPrices[1]);
 			}
@@ -117,7 +123,7 @@ public class AddPropertyPanel extends JPanel{
 		for (int i = 0; i < propertyNums[2]; i++) {
 			Property property = new Desk(propertyID++,
 					batch, PropertyManager.REPOSITORY, Color.WHITE, Specification.SHORT);
-			Client.getPropertyManager().add(property);
+			properties.add(property);
 			if (i == 0) {
 				priceMap.put(property, propertyPrices[2]);
 			}
@@ -125,20 +131,29 @@ public class AddPropertyPanel extends JPanel{
 		for (int i = 0; i < propertyNums[3]; i++) {
 			Property property = new Desk(propertyID++,
 					batch, PropertyManager.REPOSITORY, Color.BLACK, Specification.SHORT);
-			Client.getPropertyManager().add(property);
+			properties.add(property);
 			if (i == 0) {
 				priceMap.put(property, propertyPrices[3]);
 			}
 		}
 		for (int i = 0; i < propertyNums[4]; i++) {
 			Property property = new Chair(propertyID++, batch, PropertyManager.REPOSITORY);
-			Client.getPropertyManager().add(property);
+			properties.add(property);
 			if (i == 0) {
 				priceMap.put(property, propertyPrices[4]);
 			}
 		}
+		//未添加资源前先恢复ID
+		int afterID = propertyID;
+		propertyID = beforeID;
 		//为资源注册价格
 		Client.getPropertyManager().registerPrice(priceMap);
+		//价格注册无误之后再进行资源添加。
+		for (Property property : properties) {
+			Client.getPropertyManager().add(property);
+		}
+		//成功添加资源后改变ID
+		propertyID = afterID;
 	}
 
 	@Override
