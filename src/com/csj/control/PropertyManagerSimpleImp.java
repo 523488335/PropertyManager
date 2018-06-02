@@ -74,15 +74,6 @@ public class PropertyManagerSimpleImp implements PropertyManager{
 		property.setPropertyManager(this);
 	}
 	@Override
-	public void allotProperty(int propertyIndex, String local) throws PropertyOSException {
-		//从资源列表中查找需要移动的资源
-		Property property = propertyLists.get(propertyIndex);
-		//如果查找失败则抛出异常
-		if (property == null)
-			throw new PropertyOSException(ErrCode.找不到资源, "资源下标出错请确认资源下标");
-		property.setLocal(local);
-	}
-	@Override
 	public List<Property> getAllProperty() {
 		return propertyLists;
 	}

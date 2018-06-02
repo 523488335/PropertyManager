@@ -28,12 +28,6 @@ public interface PropertyManager {
 	 */
 	void add(Property property);
 	/**
-	 * 资源分配接口。
-	 * @param property 待分配的资源
-	 * @param local 分配目的地
-	 */
-	void allotProperty(int propertyIndex, String local) throws PropertyOSException;
-	/**
 	 * 查询资源接口
 	 * @return 所有local位置上的资源
 	 */
