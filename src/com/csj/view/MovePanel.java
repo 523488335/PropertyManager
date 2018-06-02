@@ -14,8 +14,8 @@ import com.csj.exception.ErrCode;
 import com.csj.exception.PropertyOSException;
 
 /**
- * ·ÖÅäÒ³Ãæ
- * @author ³ÂÉĞ¾ù
+ * åˆ†é…é¡µé¢
+ * @author é™ˆå°šå‡
  *
  */
 public class MovePanel extends JPanel{
@@ -34,7 +34,7 @@ public class MovePanel extends JPanel{
 		setLayout(null);
 		dest.setBounds(120, 25, 90, 30);
 		add(dest);
-		move = new JButton("·ÖÅä");
+		move = new JButton("åˆ†é…");
 		move.setBounds(220, 25, 60, 30);
 		add(move);
 		move.addActionListener(new ActionListener() {
@@ -46,14 +46,14 @@ public class MovePanel extends JPanel{
 				if (local.equals(PropertyManager.REPAIR) ||  
 					local.equals(PropertyManager.REPOSITORY)) {
 					Client.showError(Client.getClient(), new PropertyOSException(
-							ErrCode.Á÷³Ì³ö´í, "²»ÄÜ·ÖÅäµ½²Ö¿â»òĞŞÀíÕ¾µÈÌØÊâÇøÓò"));
+							ErrCode.æµç¨‹å‡ºé”™, "ä¸èƒ½åˆ†é…åˆ°ä»“åº“æˆ–ä¿®ç†ç«™ç­‰ç‰¹æ®ŠåŒºåŸŸ"));
 				}
 				try {
-					//»ñÈ¡Ñ¡ÖĞ×ÊÔ´
+					//è·å–é€‰ä¸­èµ„æº
 					Property property = Client.getSelectProperty();
-					//ÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ
+					//ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®
 					property.setLocal(local);
-					//Ë¢ĞÂÒ³Ãæ
+					//åˆ·æ–°é¡µé¢
 					Client.updatePropertyList();
 				} catch (PropertyOSException e1) {
 					Client.showError(Client.getClient(), e1);
@@ -64,7 +64,7 @@ public class MovePanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		g.setFont(Client.LITTLE_FONT);
-		g.drawString("ÉÏÃæ±í¸ñÖĞµÄÊÇ¹«Ë¾ËùÓĞÎ´·ÖÅä×ÊÔ´ÁĞ±í£¬ÇëÑ¡ÖĞ×ÊÔ´ĞĞ·ÖÅä×ÊÔ´£º", 20, 20);
-		g.drawString("ÒÆ¶¯µ½:", 40, 45);
+		g.drawString("ä¸Šé¢è¡¨æ ¼ä¸­çš„æ˜¯å…¬å¸æ‰€æœ‰æœªåˆ†é…èµ„æºåˆ—è¡¨ï¼Œè¯·é€‰ä¸­èµ„æºè¡Œåˆ†é…èµ„æºï¼š", 20, 20);
+		g.drawString("ç§»åŠ¨åˆ°:", 40, 45);
 	}
 }

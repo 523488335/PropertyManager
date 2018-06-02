@@ -7,8 +7,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- * »¶Ó­Ò³Ãæ
- * @author ³ÂÉĞ¾ù
+ * æ¬¢è¿é¡µé¢
+ * @author é™ˆå°šå‡
  *
  */
 public class WelcomePanel extends JPanel{
@@ -16,16 +16,16 @@ public class WelcomePanel extends JPanel{
 	private static final long serialVersionUID = -8739891611474560499L;
 
 	public WelcomePanel(){
-		setFont(new Font("ËÎÌå", 30, 30));
+		setFont(new Font("å®‹ä½“", 30, 30));
 		setBounds(Client.pageRect);
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
-		Font font=new Font("ËÎÌå",Font.BOLD,50);
+		Font font=new Font("å®‹ä½“",Font.BOLD,50);
 		g.setFont(font);
 		Color c=g.getColor();
 		g.setColor(Color.red);
-		g.drawString("»¶Ó­Ê¹ÓÃ×ÊÔ´¹ÜÀíÏµÍ³", 100, 100);
+		g.drawString("æ¬¢è¿ä½¿ç”¨èµ„æºç®¡ç†ç³»ç»Ÿ", 100, 100);
 		g.setColor(c);
 	}
 }

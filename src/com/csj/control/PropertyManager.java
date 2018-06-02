@@ -7,50 +7,50 @@ import com.csj.entry.Property;
 import com.csj.exception.PropertyOSException;
 
 /**
- * ×ÊÔ´¹ÜÀíÀà½Ó¿Ú
- * @author ³ÂÉĞ¾ù
+ * èµ„æºç®¡ç†ç±»æ¥å£
+ * @author é™ˆå°šå‡
  */
 public interface PropertyManager {
-	public static final String REPOSITORY = "²Ö¿â",REPAIR = "ĞŞÀíÕ¾";
+	public static final String REPOSITORY = "ä»“åº“",REPAIR = "ä¿®ç†ç«™";
 	/**
-	 * ×ÊÔ´ÒÆ¶¯»Øµ÷
-	 * @param property ±»ÒÆ¶¯µÄ×ÊÔ´
+	 * èµ„æºç§»åŠ¨å›è°ƒ
+	 * @param property è¢«ç§»åŠ¨çš„èµ„æº
 	 */
 	void propertyChange(Property property) throws PropertyOSException;
 	/**
-	 * ²éÑ¯ËùÓĞ×ÊÔ´
-	 * @return ËùÓĞ×ÊÔ´µÄÁĞ±í
+	 * æŸ¥è¯¢æ‰€æœ‰èµ„æº
+	 * @return æ‰€æœ‰èµ„æºçš„åˆ—è¡¨
 	 */
 	List<Property> getAllProperty();
 	/**
-	 * ×ÊÔ´Ìí¼Ó½Ó¿Ú¡£
-	 * @param property ´ıÌí¼ÓµÄ×ÊÔ´
+	 * èµ„æºæ·»åŠ æ¥å£ã€‚
+	 * @param property å¾…æ·»åŠ çš„èµ„æº
 	 */
 	void add(Property property);
 	/**
-	 * ×ÊÔ´·ÖÅä½Ó¿Ú¡£
-	 * @param property ´ı·ÖÅäµÄ×ÊÔ´
-	 * @param local ·ÖÅäÄ¿µÄµØ
+	 * èµ„æºåˆ†é…æ¥å£ã€‚
+	 * @param property å¾…åˆ†é…çš„èµ„æº
+	 * @param local åˆ†é…ç›®çš„åœ°
 	 */
 	void allotProperty(int propertyIndex, String local) throws PropertyOSException;
 	/**
-	 * ²éÑ¯×ÊÔ´½Ó¿Ú
-	 * @return ËùÓĞlocalÎ»ÖÃÉÏµÄ×ÊÔ´
+	 * æŸ¥è¯¢èµ„æºæ¥å£
+	 * @return æ‰€æœ‰localä½ç½®ä¸Šçš„èµ„æº
 	 */
 	List<Property> getPropertyByLocal(String local) throws PropertyOSException;
 	/**
-	 * ²éÑ¯×ÊÔ´½Ó¿Ú
-	 * @return ËùÓĞ³ıÁËlocalÎ»ÖÃÉÏµÄ×ÊÔ´
+	 * æŸ¥è¯¢èµ„æºæ¥å£
+	 * @return æ‰€æœ‰é™¤äº†localä½ç½®ä¸Šçš„èµ„æº
 	 */
 	List<Property> getPropertyNotLocal(String local) throws PropertyOSException;
 	/**
-	 * @param property Òª²éÑ¯¼Û¸ñµÄ×ÊÔ´
-	 * ²éÑ¯×ÊÔ´¼Û¸ñ½Ó¿Ú¡£
+	 * @param property è¦æŸ¥è¯¢ä»·æ ¼çš„èµ„æº
+	 * æŸ¥è¯¢èµ„æºä»·æ ¼æ¥å£ã€‚
 	 */
 	float getPrice(Property property);
 	/**
-	 * @param property Òª²éÑ¯¼Û¸ñµÄ×ÊÔ´
-	 * ¼Û¸ñ×¢²á½Ó¿Ú¡£
+	 * @param property è¦æŸ¥è¯¢ä»·æ ¼çš„èµ„æº
+	 * ä»·æ ¼æ³¨å†Œæ¥å£ã€‚
 	 */
 	void registerPrice(Map<Property,Float> priceMap) throws PropertyOSException;
 }

@@ -19,8 +19,8 @@ import com.csj.entry.Property;
 import com.csj.exception.ErrCode;
 import com.csj.exception.PropertyOSException;
 /**
- * Ìí¼Ó×ÊÔ´Ò³Ãæ
- * @author ³ÂÉĞ¾ù
+ * æ·»åŠ èµ„æºé¡µé¢
+ * @author é™ˆå°šå‡
  *
  */
 public class AddPropertyPanel extends JPanel{
@@ -57,7 +57,7 @@ public class AddPropertyPanel extends JPanel{
 		batchIn = new JTextField(5);
 		batchIn.setBounds(240, 50 + 25 * nums.length, 160, 25);
 		add(batchIn);
-		submit = new JButton("Ìá½»");
+		submit = new JButton("æäº¤");
 		submit.setBounds(240, 50 + 25 * nums.length + 40, 60, 40);
 		add(submit);
 		submit.addActionListener(new ActionListener() {
@@ -70,7 +70,7 @@ public class AddPropertyPanel extends JPanel{
 				try {
 					if (batch == null || batch.length() == 0) {
 						Client.showError(Client.getClient(),
-								new PropertyOSException(ErrCode.ÊäÈëĞÅÏ¢ÓĞÎó, "ÅúºÅ²»ÄÜÎª¿Õ"));
+								new PropertyOSException(ErrCode.è¾“å…¥ä¿¡æ¯æœ‰è¯¯, "æ‰¹å·ä¸èƒ½ä¸ºç©º"));
 						return;
 					}
 					for (int i = 0; i < nums.length; i++) {
@@ -78,16 +78,16 @@ public class AddPropertyPanel extends JPanel{
 						propertyPrices[i] = Integer.parseInt(prices[i].getText());
 						if (propertyNums[i] < 0 || propertyPrices[i] < 0) {
 							Client.showError(Client.getClient(), 
-									new PropertyOSException(ErrCode.ÊäÈëĞÅÏ¢ÓĞÎó, "ÊıÁ¿ºÍ¼Û¸ñ²»¿ÉĞ¡ÓÚ0,Çë¼ì²éÊäÈë"));
+									new PropertyOSException(ErrCode.è¾“å…¥ä¿¡æ¯æœ‰è¯¯, "æ•°é‡å’Œä»·æ ¼ä¸å¯å°äº0,è¯·æ£€æŸ¥è¾“å…¥"));
 							return;
 						}
 					}
 					registerProperty(propertyNums,propertyPrices,batch);
-					//Ë¢ĞÂ×ÊÔ´ÁĞ±í
+					//åˆ·æ–°èµ„æºåˆ—è¡¨
 					Client.updatePropertyList();
 				} catch (NumberFormatException e2) {
 					Client.showError(Client.getClient(), 
-							new PropertyOSException(ErrCode.ÊäÈëĞÅÏ¢ÓĞÎó, "ÊıÁ¿Ö»ÄÜÎªÕûÊı£¬¼Û¸ñ¿ÉÒÔÎª·ÖÊı,Çë¼ì²éÊäÈë"));
+							new PropertyOSException(ErrCode.è¾“å…¥ä¿¡æ¯æœ‰è¯¯, "æ•°é‡åªèƒ½ä¸ºæ•´æ•°ï¼Œä»·æ ¼å¯ä»¥ä¸ºåˆ†æ•°,è¯·æ£€æŸ¥è¾“å…¥"));
 				} catch (PropertyOSException e2) {
 					Client.showError(Client.getClient(), e2);
 				}
@@ -96,7 +96,7 @@ public class AddPropertyPanel extends JPanel{
 	}
 	
 	private void registerProperty(int[] propertyNums, float[] propertyPrices, String batch) throws PropertyOSException{
-		//´¢´æĞèÒª×¢²áµÄ¼Û¸ñÀàĞÍ
+		//å‚¨å­˜éœ€è¦æ³¨å†Œçš„ä»·æ ¼ç±»å‹
 		Map<Property, Float> priceMap = new HashMap<>();
 		for (int i = 0; i < propertyNums[0]; i++) {
 			Property property = new Desk(propertyID++,
@@ -137,20 +137,20 @@ public class AddPropertyPanel extends JPanel{
 				priceMap.put(property, propertyPrices[4]);
 			}
 		}
-		//Îª×ÊÔ´×¢²á¼Û¸ñ
+		//ä¸ºèµ„æºæ³¨å†Œä»·æ ¼
 		Client.getPropertyManager().registerPrice(priceMap);
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		g.setFont(Client.LITTLE_FONT);
-		g.drawString("ÉÏÃæ±í¸ñÖĞµÄÊÇ¹«Ë¾ËùÓĞ×ÊÔ´ÁĞ±í£¬Çë²ÎÕÕ±í¸ñ²É¹ºËùĞè×ÊÔ´£º", 20, 20);
-		g.drawString("ÀàĞÍ               ÊıÁ¿                µ¥¼Û", 40, 45);
-		g.drawString("×À×Ó(white,160cm)", 40, 70);
-		g.drawString("×À×Ó(black,160cm)", 40, 95);
-		g.drawString("×À×Ó(white,120cm)", 40, 120);
-		g.drawString("×À×Ó(black,120cm)", 40, 145);
-		g.drawString("ÒÎ×Ó", 40, 170);
-		g.drawString("ÅúºÅ£º", 40, 195);
+		g.drawString("ä¸Šé¢è¡¨æ ¼ä¸­çš„æ˜¯å…¬å¸æ‰€æœ‰èµ„æºåˆ—è¡¨ï¼Œè¯·å‚ç…§è¡¨æ ¼é‡‡è´­æ‰€éœ€èµ„æºï¼š", 20, 20);
+		g.drawString("ç±»å‹               æ•°é‡                å•ä»·", 40, 45);
+		g.drawString("æ¡Œå­(white,160cm)", 40, 70);
+		g.drawString("æ¡Œå­(black,160cm)", 40, 95);
+		g.drawString("æ¡Œå­(white,120cm)", 40, 120);
+		g.drawString("æ¡Œå­(black,120cm)", 40, 145);
+		g.drawString("æ¤…å­", 40, 170);
+		g.drawString("æ‰¹å·ï¼š", 40, 195);
 	}
 }

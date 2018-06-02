@@ -5,8 +5,8 @@ import com.csj.exception.ErrCode;
 import com.csj.exception.PropertyOSException;
 
 /**
- * ×ÊÔ´Àà£¬¹«Ë¾ËùÓĞ×ÊÔ´³éÏó¡£
- * @author ³ÂÉĞ¾ù
+ * èµ„æºç±»ï¼Œå…¬å¸æ‰€æœ‰èµ„æºæŠ½è±¡ã€‚
+ * @author é™ˆå°šå‡
  */
 public class Property {
 
@@ -28,7 +28,7 @@ public class Property {
 	}
 
 	public void setLocal(String local) throws PropertyOSException {
-		//»º´æÒÆ¶¯Ç°µÄÎ»ÖÃ
+		//ç¼“å­˜ç§»åŠ¨å‰çš„ä½ç½®
 		this.oldLocal = this.local;
 		this.local = local;
 		if (propertyManager != null) {
@@ -38,7 +38,7 @@ public class Property {
 	
 	public float getPrice() throws PropertyOSException{
 		if(propertyManager == null){
-			throw new PropertyOSException(ErrCode.Á÷³Ì³ö´í,"²»ÄÜ²éÕÒÎ´×¢²á×ÊÔ´µÄ¼Û¸ñ");
+			throw new PropertyOSException(ErrCode.æµç¨‹å‡ºé”™,"ä¸èƒ½æŸ¥æ‰¾æœªæ³¨å†Œèµ„æºçš„ä»·æ ¼");
 		}
 		return propertyManager.getPrice(this);
 	}

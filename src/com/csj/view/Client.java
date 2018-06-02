@@ -31,8 +31,8 @@ import com.csj.exception.PropertyOSException;
 public class Client extends JFrame{
 
 	private static final long serialVersionUID = -8667789053222259951L;
-	public static final Font LITTLE_FONT = new Font("ËÎÌå", Font.BOLD, 20);
-	public static final String[] columnNames = {"ĞòºÅ","×ÊÔ´ÀàĞÍ","Åú´Î","¼Û¸ñ/Ôª","Î»ÖÃ"};
+	public static final Font LITTLE_FONT = new Font("å®‹ä½“", Font.BOLD, 20);
+	public static final String[] columnNames = {"åºå·","èµ„æºç±»å‹","æ‰¹æ¬¡","ä»·æ ¼/å…ƒ","ä½ç½®"};
 	public static final Rectangle pageRect = new Rectangle(0, 600, 800, 400);
 	private Map<Labels,JPanel> labelMaps = new HashMap<>();
 	
@@ -46,46 +46,46 @@ public class Client extends JFrame{
 	private static Labels currLabels;
 	
 	public enum Labels{
-		»¶Ó­ {
+		æ¬¢è¿ {
 			@Override
 			public void updatePropertyList() {
-				//²éÑ¯È«²¿×ÊÔ´
+				//æŸ¥è¯¢å…¨éƒ¨èµ„æº
 				List<Property> list = propertyManager.getAllProperty();
 				updatePropertyList(list);
 			}
-		},Ìí¼Ó {
+		},æ·»åŠ  {
 			@Override
 			public void updatePropertyList() {
-				//²éÑ¯È«²¿×ÊÔ´
+				//æŸ¥è¯¢å…¨éƒ¨èµ„æº
 				List<Property> list = propertyManager.getAllProperty();
 				updatePropertyList(list);
 			}
-		},·ÖÅä {
+		},åˆ†é… {
 			@Override
 			public void updatePropertyList() throws PropertyOSException {
-				//²éÑ¯²Ö¿âÖĞ×ÊÔ´
+				//æŸ¥è¯¢ä»“åº“ä¸­èµ„æº
 				List<Property> list = propertyManager.getPropertyByLocal(PropertyManager.REPOSITORY);
 				updatePropertyList(list);
 			}
-		},±¨ĞŞ {
+		},æŠ¥ä¿® {
 			@Override
 			public void updatePropertyList() throws PropertyOSException {
-				//²éÑ¯²»ÔÚĞŞÀíÕ¾ÖĞµÄ×ÊÔ´
+				//æŸ¥è¯¢ä¸åœ¨ä¿®ç†ç«™ä¸­çš„èµ„æº
 				List<Property> list = propertyManager.getPropertyNotLocal(PropertyManager.REPAIR);
 				updatePropertyList(list);
 			}
-		},Î¬ĞŞ {
+		},ç»´ä¿® {
 			@Override
 			public void updatePropertyList() throws PropertyOSException {
-				//²éÑ¯ĞŞÀíÖĞ×ÊÔ´
+				//æŸ¥è¯¢ä¿®ç†ä¸­èµ„æº
 				List<Property> list = propertyManager.getPropertyByLocal(PropertyManager.REPAIR);
 				updatePropertyList(list);
 			}
 		};
 		public abstract void updatePropertyList() throws PropertyOSException;
 		/**
-		 * ¸üĞÂ×ÊÔ´ÁĞ±í
-		 * @param list ĞèÒªÏÔÊ¾µÄ×ÊÔ´
+		 * æ›´æ–°èµ„æºåˆ—è¡¨
+		 * @param list éœ€è¦æ˜¾ç¤ºçš„èµ„æº
 		 */
 		private static void updatePropertyList(List<Property> list) {
 			DefaultTableModel model = getTableModel();
@@ -94,11 +94,11 @@ public class Client extends JFrame{
 		}
 	}
 	{
-		labelMaps.put(Labels.»¶Ó­, new WelcomePanel());
-		labelMaps.put(Labels.Ìí¼Ó, new AddPropertyPanel());
-		labelMaps.put(Labels.·ÖÅä, new MovePanel());
-		labelMaps.put(Labels.±¨ĞŞ, new ReparisPanel());
-		labelMaps.put(Labels.Î¬ĞŞ, new MaintainPanel());
+		labelMaps.put(Labels.æ¬¢è¿, new WelcomePanel());
+		labelMaps.put(Labels.æ·»åŠ , new AddPropertyPanel());
+		labelMaps.put(Labels.åˆ†é…, new MovePanel());
+		labelMaps.put(Labels.æŠ¥ä¿®, new ReparisPanel());
+		labelMaps.put(Labels.ç»´ä¿®, new MaintainPanel());
 	}
 	
 	public static void main(String[] args) {
@@ -107,24 +107,24 @@ public class Client extends JFrame{
 	public Client(){
         setSize(800, 1000);
         setLocationRelativeTo(null);
-        setTitle("Ö÷Ò³Ãæ");
+        setTitle("ä¸»é¡µé¢");
         initView();
         setVisible(true);
     }
 	
 	public void initView(){
-		//ÉèÖÃ¹Ø±Õ°´Å¥¼àÌı
+		//è®¾ç½®å…³é—­æŒ‰é’®ç›‘å¬
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //´´½¨Ò»¸ö²Ëµ¥À¸
+        //åˆ›å»ºä¸€ä¸ªèœå•æ 
         JMenuBar menuBar = new JMenuBar();
-        //´´½¨Ò»¼¶²Ëµ¥
-        JMenu fileMenu = new JMenu("ÇĞ»»Ò³Ãæ");
+        //åˆ›å»ºä¸€çº§èœå•
+        JMenu fileMenu = new JMenu("åˆ‡æ¢é¡µé¢");
         fileMenu.setFont(LITTLE_FONT);
-        // Ò»¼¶²Ëµ¥Ìí¼Óµ½²Ëµ¥À¸
+        // ä¸€çº§èœå•æ·»åŠ åˆ°èœå•æ 
         menuBar.add(fileMenu);
-        //´´½¨ "ÎÄ¼ş" Ò»¼¶²Ëµ¥µÄ×Ó²Ëµ¥ºÍÒ³Ãæ
+        //åˆ›å»º "æ–‡ä»¶" ä¸€çº§èœå•çš„å­èœå•å’Œé¡µé¢
         for (Labels labels : labelMaps.keySet()) {
-        	JMenuItem item = new JMenuItem(labels.toString() + "Ò³Ãæ");
+        	JMenuItem item = new JMenuItem(labels.toString() + "é¡µé¢");
         	item.setFont(LITTLE_FONT);
         	item.addActionListener(new ActionListener() {
 				
@@ -136,25 +136,25 @@ public class Client extends JFrame{
         	fileMenu.add(item);
         	add(labelMaps.get(labels));
 		}
-        //×îºó °Ñ²Ëµ¥À¸ÉèÖÃµ½´°¿Ú
+        //æœ€å æŠŠèœå•æ è®¾ç½®åˆ°çª—å£
         setJMenuBar(menuBar);
         
         JPanel propertysPanel = new JPanel();
         propertysPanel.setBounds(0, 0, 800, 600);
         add(propertysPanel);
         String[][] datas = listToStr2D(Client.getPropertyManager().getAllProperty());
-        //´´½¨×ÊÔ´µÄ±í¸ñ
+        //åˆ›å»ºèµ„æºçš„è¡¨æ ¼
         tableModel = new DefaultTableModel(datas, columnNames);
         table = new JTable(tableModel);
-        // ´´½¨ÏÔÊ¾±í¸ñµÄ¹ö¶¯Ãæ°å
+        // åˆ›å»ºæ˜¾ç¤ºè¡¨æ ¼çš„æ»šåŠ¨é¢æ¿
         JScrollPane scrollPane = new JScrollPane(table);
-        // ½«¹ö¶¯Ãæ°åÌí¼Óµ½±ß½ç²¼¾ÖµÄÖĞ¼ä
+        // å°†æ»šåŠ¨é¢æ¿æ·»åŠ åˆ°è¾¹ç•Œå¸ƒå±€çš„ä¸­é—´
         propertysPanel.add(scrollPane);
-        //´°¿Ú´ò¿ªÊ±ÏÔÊ¾»¶Ó­Ò³Ãæ
-        switchLable(Labels.»¶Ó­);
+        //çª—å£æ‰“å¼€æ—¶æ˜¾ç¤ºæ¬¢è¿é¡µé¢
+        switchLable(Labels.æ¬¢è¿);
 	}
 	/**
-	 * Òş²ØËùÓĞÒ³Ãæ
+	 * éšè—æ‰€æœ‰é¡µé¢
 	 */
 	private void hideAllPage(){
 		for (Labels labels : labelMaps.keySet()) {
@@ -162,7 +162,7 @@ public class Client extends JFrame{
 		}
 	}
 	/**
-	 * ½«×ÊÔ´¼¯ºÏ×ª»»Îª×Ö·û´®¶şÎ¬Êı×é£¨±í¸ñ£©¡£
+	 * å°†èµ„æºé›†åˆè½¬æ¢ä¸ºå­—ç¬¦ä¸²äºŒç»´æ•°ç»„ï¼ˆè¡¨æ ¼ï¼‰ã€‚
 	 * @param list
 	 * @return
 	 */
@@ -174,7 +174,7 @@ public class Client extends JFrame{
 		return str2D;
 	}
 	/**
-	 * ½«×ÊÔ´¼¯ºÏ×ª»»Îª×Ö·û´®Ò»Î¬Êı×é£¨ĞĞ£©¡£
+	 * å°†èµ„æºé›†åˆè½¬æ¢ä¸ºå­—ç¬¦ä¸²ä¸€ç»´æ•°ç»„ï¼ˆè¡Œï¼‰ã€‚
 	 * @param property
 	 * @return
 	 */
@@ -183,10 +183,10 @@ public class Client extends JFrame{
 		strings[0] = property.getID() + "";
 		StringBuilder propertyType = new StringBuilder();
 		if (property instanceof Chair) {
-			propertyType.append("ÒÎ×Ó");
+			propertyType.append("æ¤…å­");
 		}else if (property instanceof Desk) {
 			Desk entry = (Desk) property;
-			propertyType.append("×À×Ó(");
+			propertyType.append("æ¡Œå­(");
 			propertyType.append(entry.getColor() + ",");
 			propertyType.append(entry.getSpecification().getSize() +
 					Specification.getUnits() + ")");
@@ -196,7 +196,7 @@ public class Client extends JFrame{
 		try {
 			strings[3] = property.getPrice() + "";
 		} catch (PropertyOSException e) {
-			strings[3] = "×ÊÔ´Î´µÇ¼Ç";
+			strings[3] = "èµ„æºæœªç™»è®°";
 		}
 		strings[4] = property.getLocal();
 		return strings;
@@ -207,7 +207,7 @@ public class Client extends JFrame{
 		hideAllPage();
 		if (tableModel != null) {
 		}
-		//ÏÔÊ¾labelsÒ³Ãæ
+		//æ˜¾ç¤ºlabelsé¡µé¢
 		labelMaps.get(labels).setVisible(true);
 		setCurrLabels(labels);
 		try {
@@ -222,7 +222,7 @@ public class Client extends JFrame{
 	public static Property getSelectProperty() throws PropertyOSException{
 		int index = table.getSelectedRow();
 		if(index == -1){
-			throw new PropertyOSException(ErrCode.Á÷³Ì³ö´í, "ÇëÏÈÑ¡Ôñ×ÊÔ´");
+			throw new PropertyOSException(ErrCode.æµç¨‹å‡ºé”™, "è¯·å…ˆé€‰æ‹©èµ„æº");
 		}
 		int propertyNum = Integer.parseInt((String) tableModel.getValueAt(index, 0));
 		for (Property property : propertyManager.getAllProperty()) {
@@ -230,14 +230,14 @@ public class Client extends JFrame{
 				return property;
 			}
 		}
-		throw new PropertyOSException(ErrCode.ÕÒ²»µ½×ÊÔ´, "ÕÒ²»µ½×ÊÔ´");
+		throw new PropertyOSException(ErrCode.æ‰¾ä¸åˆ°èµ„æº, "æ‰¾ä¸åˆ°èµ„æº");
 	}
 	
 	public static void showError(Component component,String msg){
-		JOptionPane.showMessageDialog(component, msg, "ÌáÊ¾",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(component, msg, "æç¤º",JOptionPane.WARNING_MESSAGE);
 	}
 	public static void showError(Component component,PropertyOSException e){
-		JOptionPane.showMessageDialog(component, e.getErrCode() + ":" + e.getMessage(), "´íÎóĞÅÏ¢",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(component, e.getErrCode() + ":" + e.getMessage(), "é”™è¯¯ä¿¡æ¯",JOptionPane.WARNING_MESSAGE);
 	}
 	public void showError(String msg){
 		showError(this, msg);

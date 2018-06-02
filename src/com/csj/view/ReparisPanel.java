@@ -13,8 +13,8 @@ import com.csj.entry.Property;
 import com.csj.exception.PropertyOSException;
 
 /**
- * ±¨ĞŞÒ³Ãæ
- * @author ³ÂÉĞ¾ù
+ * æŠ¥ä¿®é¡µé¢
+ * @author é™ˆå°šå‡
  *
  */
 public class ReparisPanel extends JPanel{
@@ -25,7 +25,7 @@ public class ReparisPanel extends JPanel{
 	public ReparisPanel(){
 		setBounds(Client.pageRect);
 		setLayout(null);
-		move = new JButton("±¨ĞŞ");
+		move = new JButton("æŠ¥ä¿®");
 		move.setBounds(60, 25, 60, 30);
 		add(move);
 		move.addActionListener(new ActionListener() {
@@ -36,14 +36,14 @@ public class ReparisPanel extends JPanel{
 				// TODO Auto-generated method stub
 				String local = PropertyManager.REPAIR;
 				try {
-					//»ñÈ¡Ñ¡ÖĞ×ÊÔ´
+					//è·å–é€‰ä¸­èµ„æº
 					Property property = Client.getSelectProperty();
-					//ÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ
+					//ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®
 					property.setLocal(local);
-					//»ñÈ¡²Ö¿âÖĞ×ÊÔ´£¬Ìæ»»±¨ĞŞ×ÊÔ´
+					//è·å–ä»“åº“ä¸­èµ„æºï¼Œæ›¿æ¢æŠ¥ä¿®èµ„æº
 					List<Property> list = Client.getPropertyManager().
 							getPropertyByLocal(PropertyManager.REPOSITORY);
-					//Èç¹û±¨ĞŞ×ÊÔ´²»ÊôÓÚ²Ö¿â£¬ÄÇÃ´ĞèÒª¸øËûÌæ»»Ò»ÑùµÄ×ÊÔ´
+					//å¦‚æœæŠ¥ä¿®èµ„æºä¸å±äºä»“åº“ï¼Œé‚£ä¹ˆéœ€è¦ç»™ä»–æ›¿æ¢ä¸€æ ·çš„èµ„æº
 					if (!property.getOldLocal().equals(PropertyManager.REPOSITORY)) {
 						boolean falg = false;
 						for (Property property2 : list) {
@@ -54,10 +54,10 @@ public class ReparisPanel extends JPanel{
 							}
 						}
 						if (falg == false) {
-							Client.showError(Client.getClient(), "²Ö¿â¿É¹©Ìæ»»×ÊÔ´²»×ã£¬Çë¸æÖª¹ÜÀíÔ±½â¾ö");
+							Client.showError(Client.getClient(), "ä»“åº“å¯ä¾›æ›¿æ¢èµ„æºä¸è¶³ï¼Œè¯·å‘ŠçŸ¥ç®¡ç†å‘˜è§£å†³");
 						}
 					}
-					//Ë¢ĞÂÒ³Ãæ
+					//åˆ·æ–°é¡µé¢
 					Client.updatePropertyList();
 				} catch (PropertyOSException e1) {
 					Client.showError(Client.getClient(), e1);
@@ -68,6 +68,6 @@ public class ReparisPanel extends JPanel{
 	@Override
 	protected void paintComponent(Graphics g) {
 		g.setFont(Client.LITTLE_FONT);
-		g.drawString("ÉÏÃæ±í¸ñÖĞµÄÊÇ¹«Ë¾ËùÓĞÎ´±¨ĞŞ×ÊÔ´ÁĞ±í£¬ÇëÑ¡ÖĞ×ÊÔ´ĞĞ±¨ĞŞ×ÊÔ´£º", 20, 20);
+		g.drawString("ä¸Šé¢è¡¨æ ¼ä¸­çš„æ˜¯å…¬å¸æ‰€æœ‰æœªæŠ¥ä¿®èµ„æºåˆ—è¡¨ï¼Œè¯·é€‰ä¸­èµ„æºè¡ŒæŠ¥ä¿®èµ„æºï¼š", 20, 20);
 	}
 }

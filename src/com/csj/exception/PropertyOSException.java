@@ -1,7 +1,7 @@
 package com.csj.exception;
 /**
- * ×Ô¶¨ÒåÒì³£
- * @author ³ÂÉĞ¾ù
+ * è‡ªå®šä¹‰å¼‚å¸¸
+ * @author é™ˆå°šå‡
  */
 public class PropertyOSException extends Exception{
 	

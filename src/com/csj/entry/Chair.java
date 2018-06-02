@@ -1,8 +1,8 @@
 package com.csj.entry;
 
 /**
- * ÒÎ×ÓµÄÊµÌåÀà
- * @author ³ÂÉĞ¾ù
+ * æ¤…å­çš„å®ä½“ç±»
+ * @author é™ˆå°šå‡
  *
  */
 public class Chair extends Property{
@@ -11,8 +11,8 @@ public class Chair extends Property{
 		super(ID,batch, local);
 	}
 	/**
-	 * ÎªÁË·½±ã±È½ÏÒÎ×Ó£¬ÖØĞ´×À×ÓµÄequals·½·¨£¬ÎÒ°Ñ¼Û¸ñÏàÍ¬µÄ×À×ÓÊÓÎªÏàÍ¬£¬·½±ã¼Û¸ñ²éÑ¯£¬
-	 * Ó°ÏìÒÎ×Ó¼Û¸ñµÄÒòËØ£ºÅúºÅ
+	 * ä¸ºäº†æ–¹ä¾¿æ¯”è¾ƒæ¤…å­ï¼Œé‡å†™æ¡Œå­çš„equalsæ–¹æ³•ï¼Œæˆ‘æŠŠä»·æ ¼ç›¸åŒçš„æ¡Œå­è§†ä¸ºç›¸åŒï¼Œæ–¹ä¾¿ä»·æ ¼æŸ¥è¯¢ï¼Œ
+	 * å½±å“æ¤…å­ä»·æ ¼çš„å› ç´ ï¼šæ‰¹å·
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -23,7 +23,7 @@ public class Chair extends Property{
 		return false;
 	}
 	/**
-	 * ÖØĞ´equalsºó¸ù¾İ¹æ·¶ÖØĞ´hashCode
+	 * é‡å†™equalsåæ ¹æ®è§„èŒƒé‡å†™hashCode
 	 */
 	@Override
 	public int hashCode() {

@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//src/com/csj/control/PropertyManager.java=UTF-8
+encoding//src/com/csj/control/PropertyManagerSimpleImp.java=UTF-8
+encoding//src/com/csj/entry/Chair.java=UTF-8
+encoding//src/com/csj/entry/Desk.java=UTF-8
+encoding//src/com/csj/entry/Property.java=UTF-8
+encoding//src/com/csj/exception/ErrCode.java=UTF-8
+encoding//src/com/csj/exception/PropertyOSException.java=UTF-8
+encoding//src/com/csj/view/AddPropertyPanel.java=UTF-8
+encoding//src/com/csj/view/Client.java=UTF-8
+encoding//src/com/csj/view/MaintainPanel.java=UTF-8
+encoding//src/com/csj/view/MovePanel.java=UTF-8
+encoding//src/com/csj/view/ReparisPanel.java=UTF-8
+encoding//src/com/csj/view/WelcomePanel.java=UTF-8

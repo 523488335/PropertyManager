@@ -11,9 +11,9 @@ import com.csj.entry.Property;
 import com.csj.exception.ErrCode;
 import com.csj.exception.PropertyOSException;
 /**
- * ×ÊÔ´¹ÜÀíÕßÊµÏÖ£¬ÊµÏÖÁË×ÊÔ´¹ÜÀí½Ó¿Ú£¬²ÉÓÃµ¥ÀıÉè¼Æ¡£
- * Õâ¸öÊµÏÖ½«ËùÓĞµÄ×ÊÔ´±£´æÔÚÍ¬Ò»¸öÈİÆ÷ÖĞ£¬ÊÊºÏ¹ÜÀíÖĞĞ¡Á¿µÄÊı¾İ¡£
- * @author ³ÂÉĞ¾ù
+ * èµ„æºç®¡ç†è€…å®ç°ï¼Œå®ç°äº†èµ„æºç®¡ç†æ¥å£ï¼Œé‡‡ç”¨å•ä¾‹è®¾è®¡ã€‚
+ * è¿™ä¸ªå®ç°å°†æ‰€æœ‰çš„èµ„æºä¿å­˜åœ¨åŒä¸€ä¸ªå®¹å™¨ä¸­ï¼Œé€‚åˆç®¡ç†ä¸­å°é‡çš„æ•°æ®ã€‚
+ * @author é™ˆå°šå‡
  */
 public class PropertyManagerSimpleImp implements PropertyManager{
 	
@@ -21,22 +21,22 @@ public class PropertyManagerSimpleImp implements PropertyManager{
 	
 	private static PropertyManager propertyManager;
 	/**
-	 * ×ÊÔ´ÁĞ±í£¬±£´æÁË¹«Ë¾µÄËùÓĞ×ÊÔ´¡£
+	 * èµ„æºåˆ—è¡¨ï¼Œä¿å­˜äº†å…¬å¸çš„æ‰€æœ‰èµ„æºã€‚
 	 */
 	private List<Property> propertyLists = new ArrayList<>();
 	/**
-	 * ¼Û¸ñÓ³Éä£¬±£´æÁËÃ¿ÖÖ±»ÊÓÎª²»Í¬×ÊÔ´µÄ¼Û¸ñ¡£
+	 * ä»·æ ¼æ˜ å°„ï¼Œä¿å­˜äº†æ¯ç§è¢«è§†ä¸ºä¸åŒèµ„æºçš„ä»·æ ¼ã€‚
 	 */
 	private Map<Property,Float> priceMap = new HashMap<>();
 	
 	{
 		localSets.add(REPOSITORY);
 		localSets.add(REPAIR);
-		localSets.add("°ì¹«ÊÒA");
-		localSets.add("°ì¹«ÊÒB");
-		localSets.add("°ì¹«ÊÒC");
-		localSets.add("°ì¹«ÊÒD");
-		localSets.add("°ì¹«ÊÒE");
+		localSets.add("åŠå…¬å®¤A");
+		localSets.add("åŠå…¬å®¤B");
+		localSets.add("åŠå…¬å®¤C");
+		localSets.add("åŠå…¬å®¤D");
+		localSets.add("åŠå…¬å®¤E");
 	}
 	
 	private PropertyManagerSimpleImp() {
@@ -49,37 +49,37 @@ public class PropertyManagerSimpleImp implements PropertyManager{
 	}
 	@Override
 	public void propertyChange(Property property) throws PropertyOSException{
-		//»ñÈ¡×ÊÔ´ÒÆ¶¯Ç°µÄÎ»ÖÃ
+		//è·å–èµ„æºç§»åŠ¨å‰çš„ä½ç½®
 		String oldLocal = property.getOldLocal();
-		//»ñÈ¡×ÊÔ´ÒÆ¶¯µÄÄ¿±êÎ»ÖÃ
+		//è·å–èµ„æºç§»åŠ¨çš„ç›®æ ‡ä½ç½®
 		String local = property.getLocal();
 		if (!localSets.contains(local)) {
 			property.setLocal(oldLocal);
-			throw new PropertyOSException(ErrCode.ÊäÈëĞÅÏ¢ÓĞÎó, "¸ÃÎ»ÖÃ²»´æÔÚ£¬ÎŞ·¨ÒÆ¶¯");
+			throw new PropertyOSException(ErrCode.è¾“å…¥ä¿¡æ¯æœ‰è¯¯, "è¯¥ä½ç½®ä¸å­˜åœ¨ï¼Œæ— æ³•ç§»åŠ¨");
 		}
-		//´òÓ¡ÈÕÖ¾
-		System.out.println("ID=" + property.getID() + "µÄ×ÊÔ´±»ÒÆ¶¯,Ô­Î»ÖÃ£º"
-		+ oldLocal + "£¬ÏÖÎ»ÖÃ£º" + local);
+		//æ‰“å°æ—¥å¿—
+		System.out.println("ID=" + property.getID() + "çš„èµ„æºè¢«ç§»åŠ¨,åŸä½ç½®ï¼š"
+		+ oldLocal + "ï¼Œç°ä½ç½®ï¼š" + local);
 	}
 	@Override
 	public float getPrice(Property property) {
-		//ÓÃ×ÊÔ´Ó³Éä²éÑ¯¸Ã×ÊÔ´µÄ¼Û¸ñ
+		//ç”¨èµ„æºæ˜ å°„æŸ¥è¯¢è¯¥èµ„æºçš„ä»·æ ¼
 		return priceMap.get(property);
 	}
 	@Override
 	public void add(Property property) {
-		//½«×ÊÔ´Ìí¼Ó½ø×ÊÔ´ÁĞ±í
+		//å°†èµ„æºæ·»åŠ è¿›èµ„æºåˆ—è¡¨
 		propertyLists.add(property);
-		//¸ø×ÊÔ´×¢²á×ÊÔ´¹ÜÀí¶ÔÏó
+		//ç»™èµ„æºæ³¨å†Œèµ„æºç®¡ç†å¯¹è±¡
 		property.setPropertyManager(this);
 	}
 	@Override
 	public void allotProperty(int propertyIndex, String local) throws PropertyOSException {
-		//´Ó×ÊÔ´ÁĞ±íÖĞ²éÕÒĞèÒªÒÆ¶¯µÄ×ÊÔ´
+		//ä»èµ„æºåˆ—è¡¨ä¸­æŸ¥æ‰¾éœ€è¦ç§»åŠ¨çš„èµ„æº
 		Property property = propertyLists.get(propertyIndex);
-		//Èç¹û²éÕÒÊ§°ÜÔòÅ×³öÒì³£
+		//å¦‚æœæŸ¥æ‰¾å¤±è´¥åˆ™æŠ›å‡ºå¼‚å¸¸
 		if (property == null)
-			throw new PropertyOSException(ErrCode.ÕÒ²»µ½×ÊÔ´, "×ÊÔ´ÏÂ±ê³ö´íÇëÈ·ÈÏ×ÊÔ´ÏÂ±ê");
+			throw new PropertyOSException(ErrCode.æ‰¾ä¸åˆ°èµ„æº, "èµ„æºä¸‹æ ‡å‡ºé”™è¯·ç¡®è®¤èµ„æºä¸‹æ ‡");
 		property.setLocal(local);
 	}
 	@Override
@@ -89,7 +89,7 @@ public class PropertyManagerSimpleImp implements PropertyManager{
 	@Override
 	public List<Property> getPropertyByLocal(String local) throws PropertyOSException {
 		if (!localSets.contains(local)) {
-			throw new PropertyOSException(ErrCode.ÕÒ²»µ½×ÊÔ´, "²»´æÔÚ¸ÄÎ»ÖÃ,Çë¼ì²é");
+			throw new PropertyOSException(ErrCode.æ‰¾ä¸åˆ°èµ„æº, "ä¸å­˜åœ¨æ”¹ä½ç½®,è¯·æ£€æŸ¥");
 		}
 		List<Property> properties = new ArrayList<>();
 		for (Property property : propertyLists) {
@@ -104,16 +104,16 @@ public class PropertyManagerSimpleImp implements PropertyManager{
 		if (map == null || map.size() == 0) {
 			return;
 		}
-		//È¡³ömapÖĞÈÎÒâÒ»ÔªËØ
+		//å–å‡ºmapä¸­ä»»æ„ä¸€å…ƒç´ 
 		Property property = null;
 		for (Property key : map.keySet()) {
 			property = key;
 			break;
 		}
-		//½«mapÖĞÈÎÒâÒ»ÔªËØÓë¼Û¸ñÓ³ÉäÖĞËùÓĞÔªËØÅúºÅÏà±È½Ï£¬¿´ÊÇ·ñ´æÔÚÏàÍ¬ÅúºÅ£¬´æÔÚÔòÅ×³öÒì³£
+		//å°†mapä¸­ä»»æ„ä¸€å…ƒç´ ä¸ä»·æ ¼æ˜ å°„ä¸­æ‰€æœ‰å…ƒç´ æ‰¹å·ç›¸æ¯”è¾ƒï¼Œçœ‹æ˜¯å¦å­˜åœ¨ç›¸åŒæ‰¹å·ï¼Œå­˜åœ¨åˆ™æŠ›å‡ºå¼‚å¸¸
 		for (Property key : priceMap.keySet()) {
 			if (key.getBatch().equals(property.getBatch())) {
-				throw new PropertyOSException(ErrCode.Á÷³Ì³ö´í,"Åú´ÎÖØ¸´,ÇëÈ·ÈÏÅú´Î");
+				throw new PropertyOSException(ErrCode.æµç¨‹å‡ºé”™,"æ‰¹æ¬¡é‡å¤,è¯·ç¡®è®¤æ‰¹æ¬¡");
 			}
 		}
 		priceMap.putAll(map);

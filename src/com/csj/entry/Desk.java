@@ -1,22 +1,22 @@
 package com.csj.entry;
 
 /**
- * ×À×ÓµÄÊµÌåÀà
- * @author ³ÂÉĞ¾ù
+ * æ¡Œå­çš„å®ä½“ç±»
+ * @author é™ˆå°šå‡
  *
  */
 public class Desk extends Property{
 	
 	/**
-	 * ÑÕÉ«£¬ÓÃÃ¶¾Ù±íÊ¾¡£
+	 * é¢œè‰²ï¼Œç”¨æšä¸¾è¡¨ç¤ºã€‚
 	 */
 	private Color color;
 	/**
-	 * ¹æ¸ñ£¬ÓÃÃ¶¾Ù±íÊ¾¡£
+	 * è§„æ ¼ï¼Œç”¨æšä¸¾è¡¨ç¤ºã€‚
 	 */
 	private Specification specification;
 	/**
-	 * »º´æ¼ÆËãµÄhashcode£¬±ÜÃâÖØ¸´¼ÆËãÀË·Ñcpu¡£
+	 * ç¼“å­˜è®¡ç®—çš„hashcodeï¼Œé¿å…é‡å¤è®¡ç®—æµªè´¹cpuã€‚
 	 */
 	private int hashcode = 0;
 	
@@ -26,11 +26,11 @@ public class Desk extends Property{
 	public static enum Specification {
 		LONG(160),SHORT(120);
 		/**
-		 * ×À×Ó´óĞ¡
+		 * æ¡Œå­å¤§å°
 		 */
 		private int size;
 		/**
-		 * ¼ÆÁ¿µ¥Î»
+		 * è®¡é‡å•ä½
 		 */
 		private final static String Units = "cm";
 		private Specification(int size) {
@@ -50,8 +50,8 @@ public class Desk extends Property{
 		this.specification = specification;
 	}
 	/**
-	 * ÎªÁË·½±ã±È½Ï×À×Ó£¬ÖØĞ´×À×ÓµÄequals·½·¨£¬ÎÒ°Ñ¼Û¸ñÏàÍ¬µÄ×À×ÓÊÓÎªÏàÍ¬£¬·½±ã¼Û¸ñ²éÑ¯£¬
-	 * Ó°Ïì×À×Ó¼Û¸ñµÄÒòËØ£ºÅúºÅ£¬ÑÕÉ«ºÍ¹æ¸ñ
+	 * ä¸ºäº†æ–¹ä¾¿æ¯”è¾ƒæ¡Œå­ï¼Œé‡å†™æ¡Œå­çš„equalsæ–¹æ³•ï¼Œæˆ‘æŠŠä»·æ ¼ç›¸åŒçš„æ¡Œå­è§†ä¸ºç›¸åŒï¼Œæ–¹ä¾¿ä»·æ ¼æŸ¥è¯¢ï¼Œ
+	 * å½±å“æ¡Œå­ä»·æ ¼çš„å› ç´ ï¼šæ‰¹å·ï¼Œé¢œè‰²å’Œè§„æ ¼
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -63,7 +63,7 @@ public class Desk extends Property{
 		return false;
 	}
 	/**
-	 * ÖØĞ´equalsºó¸ù¾İ¹æ·¶ÖØĞ´hashCode
+	 * é‡å†™equalsåæ ¹æ®è§„èŒƒé‡å†™hashCode
 	 */
 	@Override
 	public int hashCode() {
