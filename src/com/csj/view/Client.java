@@ -205,8 +205,6 @@ public class Client extends JFrame{
 	public void switchLable(Labels labels){
 		setTitle(labels.toString());
 		hideAllPage();
-		if (tableModel != null) {
-		}
 		//显示labels页面
 		labelMaps.get(labels).setVisible(true);
 		setCurrLabels(labels);

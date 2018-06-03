@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.csj.control.PropertyManager;
 import com.csj.entry.Property;
@@ -21,19 +21,26 @@ import com.csj.exception.PropertyOSException;
 public class MovePanel extends JPanel{
 
 	private static final long serialVersionUID = -8739891611474560499L;
-	JTextField dest;
+	JComboBox<String> dest;
 	JButton move;
 
 	public MovePanel(){
 		setBounds(Client.pageRect);
+		setLayout(null);
 		initView();
 	}
 	private void initView() {
 		// TODO Auto-generated method stub
-		dest = new JTextField(5);
-		setLayout(null);
+		
+		dest = new JComboBox<>();
+		dest.addItem("办公室A");
+		dest.addItem("办公室B");
+		dest.addItem("办公室C");
+		dest.addItem("办公室D");
+		dest.addItem("办公室E");
 		dest.setBounds(120, 25, 90, 30);
 		add(dest);
+		
 		move = new JButton("分配");
 		move.setBounds(220, 25, 60, 30);
 		add(move);
@@ -41,8 +48,7 @@ public class MovePanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String local = dest.getText().trim();
+				String local = dest.getSelectedItem().toString();
 				if (local.equals(PropertyManager.REPAIR) ||  
 					local.equals(PropertyManager.REPOSITORY)) {
 					Client.showError(Client.getClient(), new PropertyOSException(
